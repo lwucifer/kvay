@@ -62,7 +62,7 @@
                 var that = this;
                 var Arcbar1 = {
                     series: [{
-                        "name": that.$t('bus.eDu') + that.quota + " " + that.$t('bus.yuan'),
+                        "name": that.$t('bus.eDu') + ' ' + util.toMoney(that.quota) + " " + that.$t('bus.yuan'),
                         "data": (that.borrow / that.quota).toFixed(2),
                         "color": "#2fc25b"
                     }]
@@ -133,7 +133,6 @@
 
     /*样式的width和height一定要与定义的cWidth和cHeight相对应*/
     .charts1 {
-        position: absolute;
         width: 380upx;
         height: 380upx;
     }

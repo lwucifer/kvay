@@ -27,7 +27,7 @@
             </view>
             <view class="input-row border">
                 <label class="title">{{$t('user.shenFenZhengHao')}}</label>
-                <m-input type="text" :placeholder="$t('tip.qingShuRuShenFenZhengHao')" v-model="idcard"></m-input>
+                <m-input type="number" :placeholder="$t('tip.qingShuRuShenFenZhengHao')" v-model="idcard"></m-input>
             </view>
             <view class="input-row border">
                 <label class="title long">{{$t('user.chuShengRiQi')}}</label>
@@ -87,14 +87,16 @@
                 frontImg: "",
                 backImg: "",
                 faceImg: "",
-                facePath: ""
+                facePath: "",
+                loadFront: false,
+                loadBack: false,
             }
         },
         components: {
             uniIcons,
             mPicker,
             mInput,
-            mCode
+            mCode,
         },
         computed: {
             ...mapState(["userId", "auth"])
@@ -156,7 +158,8 @@
                 that.sex = that.sexs[that.sexIndex]["label"];
             },
             onFrontSelect() {
-                var that = this;
+                const that = this;
+                that.loadFront = true;
                 uni.chooseImage({
                     count: 1,
                     sizeType: ['compressed'],
@@ -171,16 +174,22 @@
                         };
                         userService.saveFaceauth(input, function (obj, msg, code) {
                             that.frontImg = JSON.stringify(msg);
+                            that.loadFront = false;
                         });
                     }
                 });
             },
             onReverseSelect() {
                 var that = this;
+                if (that.loadFront) {
+                    util.tip(that.$t('tip.wait'))
+                    return;
+                }
                 if (util.isEmpty(that.frontImg)) {
                     util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
                     return;
                 }
+                that.loadBack = true;
                 uni.chooseImage({
                     count: 1,
                     sizeType: ['compressed'],
@@ -195,12 +204,17 @@
                         };
                         userService.saveFaceauth(input, function (obj, msg, code) {
                             that.backImg = JSON.stringify(msg);
+                            that.loadBack = false;
                         });
                     }
                 });
             },
             onFaceSelect() {
                 var that = this;
+                if (that.loadBack) {
+                    util.tip(that.$t('tip.wait'))
+                    return;
+                }
 
                 if (util.isEmpty(that.frontImg)) {
                     util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
@@ -267,7 +281,7 @@
         },
         onLoad: function () {
             var that = this;
-            //·ÀÅÄÕÕµÈ×ÓÒ³Ãæ·µ»ØÊ±ÖØÖÃÄÚÈÝ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ò³ï¿½æ·µï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             userService.get({ userId: that.userId }, function (obj, msg, code) {
                 that.name = obj.realName;
                 that.idcard = obj.idNo;

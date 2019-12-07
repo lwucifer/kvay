@@ -7,7 +7,7 @@
         </view>
         <view class="input-group inner input-flex flex1">
             <view class="flex1 flex-center">
-                <image style="width: 200px; height: 200px;" :src="src"></image>
+                <img style="width: 200px; height: 200px;"  src="/static/img/QR.png"/>
             </view>
         </view>
     </view>
@@ -27,7 +27,7 @@
     export default {
         data() {
             return {
-                src: ''
+                src: '/static/img/QR.png'
             }
         },
         components: {

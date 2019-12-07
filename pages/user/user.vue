@@ -147,5 +147,5 @@
     }
 
     /*样式的width和height一定要与定义的cWidth和cHeight相对应*/
-    .charts1 { position: absolute; width: 280upx; height: 280upx; }
+    .charts1 { width: 280upx; height: 280upx; }
 </style>

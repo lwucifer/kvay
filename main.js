@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App'
 import VueI18n from 'vue-i18n'
+import VueCordova from 'vue-cordova'
+
+Vue.use(VueCordova)
 Vue.use(VueI18n)
 
 import './js_sdk/ican-H5Api/ican-H5Api.js'
@@ -43,5 +46,5 @@ app.$mount()
 //1988-09-16
 //Nam
 
-//ocb ÒøÐÐÕËºÅ
+//ocb ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
 //9794480372101232

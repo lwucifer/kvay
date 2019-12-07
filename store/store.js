@@ -11,7 +11,7 @@ import accountService from '@/services/account.js'
 import userService from '@/services/user.js'
 
 const i18n = new VueI18n(langs);
-const DEFAULT_QUOTA = 10000
+const DEFAULT_QUOTA = 1000000
 const TOLOGIN = function () {
     uni.navigateTo({
         url: '/pages/account/account'

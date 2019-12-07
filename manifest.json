@@ -76,7 +76,7 @@
             "https" : false,
             "port" : 9088
         },
-        "title" : "lending",
+        "title" : "kv",
         "domain" : "http://m3w.cn/__uni__b35020f"
     },
     "networkTimeout" : {
