@@ -191,7 +191,7 @@
             },
             amountGet() {
                 var that = this;
-                return (that.amount + '').replace(/,/g, "");
+                return (that.amount + '').replace(/\./g, "");
             },
             onTimeSet(e) {
                 var that = this;

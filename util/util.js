@@ -356,7 +356,7 @@ _util.toMoney=function(obj, num) {
     num = num > 0 && num <= 20 ? num : 0;
 
     if (!that.isEmpty(obj)) {
-        obj = (obj+'').replace(/\,/g, "") + "";
+        obj = (obj+'').replace(/\./g, "") + "";
     }
 
     if (num > 0) {
@@ -368,7 +368,7 @@ _util.toMoney=function(obj, num) {
     let valStr = "";
     var varArr = obj.split(".")[0].split("").reverse();
     for (var i = 0; i < varArr.length; i++) {
-        valStr += varArr[i] + ((i + 1) % 3 == 0 && (i + 1) != varArr.length ? "," : "");
+        valStr += varArr[i] + ((i + 1) % 3 == 0 && (i + 1) != varArr.length ? "." : "");
     }
 
     let decStr = "";

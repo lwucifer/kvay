@@ -76,7 +76,7 @@
                 var that = this;
                 var Arcbar1 = {
                     series: [{
-                        "name": that.$t('bus.eDu') + that.quota + " " + that.$t('bus.yuan'),
+                        "name": that.$t('bus.eDu') + " " + that.quota + " " + that.$t('bus.yuan'),
                         "data": (that.borrow / that.quota).toFixed(2),
                         "color": "#2fc25b"
                     }]

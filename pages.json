@@ -249,8 +249,8 @@
       {
         "pagePath": "pages/business/repayment/repayment",
         "text": "Thanh toán",
-        "iconPath": "static/img/user.png",
-        "selectedIconPath": "static/img/user_active.png"
+        "iconPath": "static/img/repay.png",
+        "selectedIconPath": "static/img/repay_active.png"
       },
       {
         "pagePath": "pages/user/user",
