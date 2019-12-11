@@ -11,8 +11,8 @@
                 <span v-if="!time15" class="btn-select active" >8 {{$t('bus.timesu')}}</span>
                 <span v-if="!time15" class="btn-select" >15 {{$t('bus.timesu')}}</span>
 
-                <button v-if="time15" class="btn-select active" @click="onTimeSet('8')">8 {{$t('bus.timesu')}}</button>
-                <button v-if="time15" class="btn-select" @click="onTimeSet('15')">15 {{$t('bus.timesu')}}</button>
+                <button v-if="time15" class="btn-select" :class="timeLimit == 8 ? 'active' : ''" @click="onTimeSet('8')">8 {{$t('bus.timesu')}}</button>
+                <button v-if="time15" class="btn-select" :class="timeLimit == 15 ? 'active' : ''" @click="onTimeSet('15')">15 {{$t('bus.timesu')}}</button>
             </view>
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.fuWuFei')}}</label>
@@ -118,7 +118,12 @@
                 userService.getBanks({ userId: that.userId }, function (obj, msg, code) {
                     that.bankName = obj["bank"];
                     that.bankCard = obj["cardNo"];
-                })
+                });
+                userService.getProductTime({ userId: that.userId }, function (obj, msg, code) {
+                    if (obj['productTime'] == '15') {
+                        that.time15 = true;
+                    }
+                });
             },
             onSubmit() {
                 var that = this;
@@ -165,14 +170,14 @@
             amountCost(callback) {
                 var that = this;
                 if (parseInt(that.amountGet()) > that.borrow) {
-                    that.amount = util.toMoney(that.borrow)+'';
+                    that.amount = util.toMoney(that.borrow);
                 } else if (parseInt(that.amountGet()) < that.minAmount) {
                     that.amount = util.toMoney(that.minAmount);
                 } else {
                     that.amount = util.toMoney(that.amount);
                 }
 
-                if (util.isEmpty(that.amountGet()) || util.isEmpty(that.timeLimit)) {
+                if (util.isEmpty(that.amount) || util.isEmpty(that.timeLimit)) {
                     that.repAmount = '0';
                     that.interestfee ='0';
                     that.repTotal = '0';
@@ -191,7 +196,7 @@
             },
             amountGet() {
                 var that = this;
-                return (that.amount + '').replace(/\./g, "");
+                return (that.amount + '').replace(/\./g,'');
             },
             onTimeSet(e) {
                 var that = this;
@@ -207,12 +212,6 @@
             var that = this;
             option = option || { amount: 0 };
             that.query = option;
-            userService.getProductTime({ userId: that.userId }, function (obj, msg, code) {
-                that.timeLimit = obj['productTime'];
-                if (obj['productTime'] == '15') {
-                    that.time15 = true;
-                }
-            })
         },
         onShow: function () {
             var that = this;
