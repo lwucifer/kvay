@@ -190,11 +190,11 @@
                     return;
                 }
                 busService.borrowCost({ userId: that.userId, amount: that.amountGet(), timeLimit: that.timeLimit }, function (obj, msg, code) {
-                    that.repAmount = util.toMoney(obj.realAmount) + '';
+                    that.repAmount = util.toMoney(Math.ceil(obj.realAmount)) + '';
                     that.servicefee = util.toMoney(Math.ceil(obj.totalFee))+'';
-                    that.interestfee = util.toMoney(obj.interest) + '';
+                    that.interestfee = util.toMoney(Math.ceil(obj.interest)) + '';
                     that.repTotal = util.toMoney(Math.ceil((obj.realAmount) + (obj.interest) + (obj.totalFee))) + '';
-                    that.fee = util.toMoney(obj.fee) + '';
+                    that.fee = util.toMoney(Math.ceil(obj.fee)) + '';
                     that.repTime = obj.repayTime;
                 })
             },
