@@ -96,7 +96,7 @@
 				this.isFocus = true
 			},
 			onBlur() {
-				this.$emit('input', '')
+				this.$emit('blur', '')
 			},
 			onInput(e) {
 				this.$emit('input', e.target.value)

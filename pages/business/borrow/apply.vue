@@ -165,7 +165,7 @@
                     if (cur - that.lastInput >= 490) {
                         that.amountCost();
                     }
-                }, 1000)
+                }, 500)
             },
             amountCost(callback) {
                 var that = this;
