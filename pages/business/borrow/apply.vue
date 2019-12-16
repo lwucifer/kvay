@@ -3,8 +3,7 @@
         <view class="input-group inner">
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.jingKuanJinge')}}</label>
-                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')"
-                         @input="onAmountCostChange" @blur="blurr"></m-input>
+                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')" @blur="onAmountCostChange"></m-input>
                 <label class="rfix">({{$t('common.currency')}})</label>
             </view>
             <view class="input-row input-flex border">
@@ -157,9 +156,6 @@
                 uni.navigateTo({
                     url: 'agreement?userId=' + that.userId + '&amount=' + that.amountGet() + '&limit=' + that.timeLimit + '&fee=' + that.fee
                 });
-            },
-            blurr(e) {
-                console.log(999);
             },
             onAmountCostChange(e) {
                 var that = this;
