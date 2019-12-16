@@ -3,7 +3,8 @@
         <view class="input-group inner">
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.jingKuanJinge')}}</label>
-                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')" @input="onAmountCostChange"></m-input>
+                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')"
+                         @input="onAmountCostChange" @blur="blurr"></m-input>
                 <label class="rfix">({{$t('common.currency')}})</label>
             </view>
             <view class="input-row input-flex border">
@@ -157,6 +158,9 @@
                     url: 'agreement?userId=' + that.userId + '&amount=' + that.amountGet() + '&limit=' + that.timeLimit + '&fee=' + that.fee
                 });
             },
+            blurr(e) {
+                console.log(999);
+            },
             onAmountCostChange(e) {
                 var that = this;
                 that.lastInput = new Date();
@@ -187,9 +191,9 @@
                 }
                 busService.borrowCost({ userId: that.userId, amount: that.amountGet(), timeLimit: that.timeLimit }, function (obj, msg, code) {
                     that.repAmount = util.toMoney(obj.realAmount) + '';
-                    that.servicefee = util.toMoney(obj.totalFee)+'';
+                    that.servicefee = util.toMoney(Math.ceil(obj.totalFee))+'';
                     that.interestfee = util.toMoney(obj.interest) + '';
-                    that.repTotal = util.toMoney((obj.realAmount) + (obj.interest) + (obj.totalFee)) + '';
+                    that.repTotal = util.toMoney(Math.ceil((obj.realAmount) + (obj.interest) + (obj.totalFee))) + '';
                     that.fee = util.toMoney(obj.fee) + '';
                     that.repTime = obj.repayTime;
                 })
