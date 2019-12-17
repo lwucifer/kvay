@@ -222,7 +222,7 @@ const saveRealname = function (input, success, error, opt) {
         return;
     }
 
-    if (util.isEmpty(input.sex)) {
+    if (input.sex === i18n.t('tip.qingXuanZe')) {
         util.tip(i18n.t('tip.qingShuRuYouXiaoDe') + i18n.t('user.xingBie'));
         return;
     }
