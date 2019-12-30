@@ -1,5 +1,6 @@
 {
-  "pages": [ //pages数组中第一项表示应用启动页,
+  "pages": [
+    //pages数组中第一项表示应用启动页,
     {
       "path": "pages/main/main",
       "style": {
@@ -229,9 +230,51 @@
       }
     },
     {
+      "path": "pages/content/help/phone",
+      "style": {
+        "navigationBarTitleText": "Hướng dẫn xác thực nhà mạng"
+      }
+    },
+    {
       "path": "pages/loading/loading",
       "style": {
         "navigationBarTitleText": "Đang tải..."
+      }
+    },
+    {
+      "path": "pages/main/appmain",
+      "style": {
+        "navigationBarTitleText": "Trang chủ"
+      }
+    },
+    {
+      "path": "pages/business/repayment/apprepayment",
+      "style": {
+        "navigationBarTitleText": "Thanh toán"
+      }
+    },
+    {
+      "path": "pages/account/appaccount",
+      "style": {
+        "navigationBarTitleText": "Tài khoản"
+      }
+    },
+    {
+      "path": "pages/user/profile/appprofile",
+      "style": {
+        "navigationBarTitleText": "Thông tin cá nhân"
+      }
+    },
+    {
+      "path": "pages/account/login/applogin",
+      "style": {
+        "navigationBarTitleText": "Đăng nhập"
+      }
+    },
+    {
+      "path": "pages/account/reg/appreg",
+      "style": {
+        "navigationBarTitleText": "Tạo tài khoản"
       }
     }
   ],

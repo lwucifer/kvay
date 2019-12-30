@@ -3,6 +3,7 @@ const langs = {
     messages: {
         'vi-VN': {
             common: {
+                require: 'Bắt buộc',
                 currency: 'Đ',
                 title: "KVAY",
                 descript: "KVay- Vay Online Mọi Lúc Mọi Nơi",
@@ -105,6 +106,12 @@ const langs = {
                 zhengZaiShangChuan: 'Đang tải lên'
             },
             user: {
+                sub1: 'Tiến hành xác thực danh tính',
+                sub2: 'Vui lòng hoàn thiện thông tin cá nhân',
+                sub3: 'Để chúng tôi biết bạn đang làm gì',
+                sub4: 'Chúng tối sẽ giải ngân đến số thẻ ngân hàng này',
+                sub5: 'Xác thực của nhà mạng giúp xét duyệt nhanh hơn',
+                sub6: 'Xác thực facebook giúp hạn mức vay cao hơn, xét duyệt và giải ngân nhanh hơn',
                 regist: "Tạo tài khoản",
                 login: "Đăng nhập",
                 logout: "Thoát ra",

@@ -20,6 +20,8 @@
                 <view class="uni-list-item__content-title">{{ title }}</view>
                 <view v-if="note"
                       class="uni-list-item__content-note">{{ note }}</view>
+                <view v-if="required" class="require">({{ $t('common.require') }})</view>
+                <view class="sub">{{ sub }}</view>
             </view>
             <view v-if="showBadge || showArrow || showSwitch  || showText"
                   class="uni-list-item__extra">
@@ -56,6 +58,10 @@
                 default: ''
             }, // 列表标题
             note: {
+                type: String,
+                default: ''
+            }, // 列表描述
+            sub: {
                 type: String,
                 default: ''
             }, // 列表描述
@@ -104,12 +110,17 @@
                 type: [Boolean, String],
                 default: false
             },
+            required: {
+                // 是否显示扩展图标
+                type: [Boolean],
+                default: false
+            },
             extraIcon: {
                 type: Object,
                 default() {
                     return {
                         type: 'contact',
-                        color: '#000000',
+                        color: '#0078D4',
                         size: 20
                     }
                 }
@@ -145,6 +156,15 @@
 
     $list-item-pd: $uni-spacing-col-lg $uni-spacing-row-lg;
 
+    .require {
+        color: #067807;
+        font-size: 12px;
+        margin: 0 0 2px;
+    }
+    .sub {
+        color: #999;
+        font-size: 11px;
+    }
     .uni-list-item {
         font-size: $uni-font-size-lg;
         position: relative;
@@ -154,93 +174,93 @@
         align-items: center;
         &--disabled
 
-    {
-        @include list-disabled;
-    }
+        {
+            @include list-disabled;
+        }
 
-    &--hover {
-        @include list-hover;
-    }
+        &--hover {
+            @include list-hover;
+        }
 
-    &__container {
-        padding: $list-item-pd;
-        width: 100%;
-        box-sizing: border-box;
-        flex: 1;
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        &:after
+        &__container {
+            padding: $list-item-pd;
+            width: 100%;
+            box-sizing: border-box;
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            &:after
 
-    {
-        position: absolute;
-        z-index: 3;
-        right: 0;
-        bottom: 0;
-        left: 30upx;
-        height: 1px;
-        content: '';
-        -webkit-transform: scaleY(0.5);
-        transform: scaleY(0.5);
-        background-color: $uni-border-color;
-    }
+            {
+                position: absolute;
+                z-index: 3;
+                right: 0;
+                bottom: 0;
+                left: 30upx;
+                height: 1px;
+                content: '';
+                -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5);
+                background-color: $uni-border-color;
+            }
 
-    }
+        }
 
-    &__content {
-        flex: 1;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        color: #3b4144;
-        &-title
+        &__content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #3b4144;
+            &-title
 
-    {
-        font-size: $uni-font-size-lg;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: inherit;
-        line-height: 1.5;
-        overflow: hidden;
-    }
+            {
+                font-size: $uni-font-size-lg;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: inherit;
+                line-height: 1.5;
+                overflow: hidden;
+            }
 
-    &-note {
-        margin-top: 6upx;
-        color: $uni-text-color-grey;
-        font-size: $uni-font-size-base;
-        white-space: normal;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-    }
+            &-note {
+                margin-top: 6upx;
+                color: $uni-text-color-grey;
+                font-size: $uni-font-size-base;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
 
-    }
+        }
 
-    &__extra {
-        width: 32%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
+        &__extra {
+            width: 32%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
 
-    &__icon {
-        margin-right: 18upx;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        &-img
+        &__icon {
+            margin-right: 18upx;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            &-img
 
-    {
-        height: $uni-img-size-base;
-        width: $uni-img-size-base;
-    }
+            {
+                height: $uni-img-size-base;
+                width: $uni-img-size-base;
+            }
 
-    }
+        }
     }
 
     .uni-list > .uni-list-item:last-child .uni-list-item-container:after {

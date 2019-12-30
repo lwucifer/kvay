@@ -447,7 +447,7 @@ _util.confirm = function (content, success, cancel) {
     });
 };
 
-_util.request = function (path, params, success, error, opt) {
+_util.request = function (path, params, success, error, opt, token = '') {
     var that = this;
 
     //params
@@ -494,8 +494,9 @@ _util.request = function (path, params, success, error, opt) {
         fail: function (res) { that.apiFail(res, error); }
     }, opt);
 
+
     //token
-    var token = ((options["header"]["token"]) || that.getToken()) || "";
+    if (token === '') { token = ((options["header"]["token"]) || that.getToken()) || ""; }
     if (!that.isEmpty(token) && token != "0") {
         //token = "Bearer " + token;
         options["header"]["token"] = token;
@@ -821,5 +822,14 @@ _util.borrowStatusText = function (status) {
 }
 
 _util.getClient = function () { return "10"; }
+
+_util.getParam = function ( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
 
 export default _util; 

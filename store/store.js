@@ -262,8 +262,11 @@ let store = new Vuex.Store({
                 state.auth = obj;
                 _inputCallback(input)(obj);
             });
+        },
+        setAccount (state, input) {
+            _loginSet(state, input.signin, input.user);
         }
     }
-})
+});
 
 export default store;
